@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         int size = 3;
-        int delay = 100;
+        int delay = 10;
         int display_size = 800;
 
         Program p = new Program(size, display_size, delay);

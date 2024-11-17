@@ -50,9 +50,21 @@ public class Person implements Actor, DynamicDisplayInformationProvider {
 
     private void acquireDog(World world) {
         if(dog != null) return;
-        if(new Random().nextDouble() < 0.92){
+        if(new Random().nextDouble() < 0.15){
             this.dog = new Dog(this);
             world.setTile(this.previousLocation, this.dog);
         }
+    }
+
+    public void addDog(World world) {
+        if(dog != null) return;
+        if(this.previousLocation == null) return;
+
+        this.dog = new Dog(this);
+        world.setTile(this.previousLocation, this.dog);
+    }
+
+    public Dog getDog() {
+        return this.dog;
     }
 }

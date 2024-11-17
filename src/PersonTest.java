@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PersonTest {
     World w;
@@ -36,11 +37,31 @@ public class PersonTest {
         w.setTile(location3, p3);
 
 
-        p.act(w);
+        p.act(w)    ;
 
         assertEquals(location, w.getLocation(p),"The last person should not have moved as there are no valid moves.");
     }
 
+    @Test
+    public void testDogProbability() {
+        int NUM_PEOPLE = 100000;
+        int NUM_DOGS = 0;
+        for(int i = 0; i < NUM_PEOPLE; i++) {
+            Person p = new Person();
+            Location location = new Location(0,0);
+            w.setTile(location, p);
+            w.setCurrentLocation(location);
+            p.act(w);
 
+            if(p.getDog() != null) {
+                NUM_DOGS++;
+                w.delete(p.getDog());
+            }
+            w.delete(p);
+        }
+
+        double result = NUM_DOGS / (NUM_PEOPLE * 1.0);
+        assertTrue(Math.abs(0.15 - result) <= 0.015);
+    }
 
 }
