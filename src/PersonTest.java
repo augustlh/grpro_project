@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PersonTest {
     World w;
@@ -37,9 +36,29 @@ public class PersonTest {
         w.setTile(location3, p3);
 
 
-        p.act(w)    ;
+        p.act(w);
 
-        assertEquals(location, w.getLocation(p),"The last person should not have moved as there are no valid moves.");
+        assertEquals(location, w.getLocation(p));
+    }
+
+    @Test
+    public void personMovesDuringDay(){
+        Person p = new Person();
+        Location l = new Location(0,0);
+        w.setDay();
+        w.setCurrentLocation(l);
+        w.setTile(l, p);
+
+        p.act(w); // vi eksekverer ’act’ metoden
+
+        if(p.getDog() != null) {
+            w.delete(p.getDog());
+        }
+
+        Location n = w.getLocation(p);
+        assertNull(w.getTile(l));
+        assertNotNull(n);
+        assertNotEquals(l, n);
     }
 
     @Test

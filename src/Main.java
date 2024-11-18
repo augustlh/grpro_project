@@ -7,7 +7,7 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        int size = 3;
+        int size = 15;
         int delay = 500;
         int display_size = 800;
 
@@ -21,7 +21,6 @@ public class Main {
         p.show();
         p.run();
     }
-
 
     private static void initializeWorld(World world) {
         if (world == null) {

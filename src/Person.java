@@ -33,7 +33,6 @@ public class Person implements Actor, DynamicDisplayInformationProvider {
         }
 
         Set<Location> emptyNeighbours = world.getEmptySurroundingTiles();
-
         if(emptyNeighbours.isEmpty()) {
             return;
         }

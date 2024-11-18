@@ -24,10 +24,10 @@ public class Dog implements Actor, DynamicDisplayInformationProvider {
 
     @Override
     public void act(World world) {
-//        Random random = new Random();
-//        if(random.nextDouble() < 0.10) {
-//            System.out.println("woof");
-//        }
+        Random random = new Random();
+        if(random.nextDouble() < 0.10) {
+            System.out.println("woof");
+        }
     }
 
     public void move(World world, Location to) {
